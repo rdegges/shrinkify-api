@@ -1,0 +1,37 @@
+{
+  "name": "shrinkify-api",
+  "version": "0.0.0",
+  "description": "An API service for compressing web assets.",
+  "main": "shrinkify.js",
+  "dependencies": {
+    "body": "~4.4.2",
+    "compression": "~1.0.2",
+    "express": "~4.3.0",
+    "html-minifier": "~0.6.1",
+    "logfmt": "~1.1.2",
+    "response-time": "~1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rdegges/shrinkify-api"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "javascript",
+    "js",
+    "compression",
+    "gzip",
+    "minify"
+  ],
+  "author": "Randall Degges",
+  "license": "UNLICENSE",
+  "bugs": {
+    "url": "https://github.com/rdegges/shrinkify-api/issues"
+  },
+  "homepage": "https://github.com/rdegges/shrinkify-api"
+}
