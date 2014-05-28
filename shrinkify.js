@@ -33,6 +33,7 @@ app.use(logfmt.requestLogger());
 // routes
 app.post('/html', shrinkHTML);
 
+
 // views
 function shrinkHTML(req, res) {
 
