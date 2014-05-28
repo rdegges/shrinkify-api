@@ -8,6 +8,7 @@ var compress = require('compression');
 
 // globals
 var app = express();
+var defaultPort = 3000;
 var htmlminifyOpts = {
   removeComments: true,
   removeCommentsFromCDATA: true,
@@ -48,6 +49,6 @@ function shrinkHTML(req, res) {
 
 
 // run
-var server = app.listen(process.env.PORT || 3000, function() {
+var server = app.listen(process.env.PORT || defaultPort, function() {
   console.log('Listening on port %d.', server.address().port);
 });
