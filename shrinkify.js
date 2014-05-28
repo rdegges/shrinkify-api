@@ -4,6 +4,7 @@ var logfmt = require('logfmt');
 var htmlminify = require('html-minifier').minify;
 var textBody = require('body');
 var compress = require('compression');
+var cleanCSS = require('clean-css');
 
 
 // globals
@@ -24,6 +25,16 @@ var htmlminifyOpts = {
   minifyJS: true,
   minifyCSS: true,
 };
+var cssminifyOpts = {
+  keepSpecialComments: false,
+  keepBreaks: false,
+  benchmark: false,
+  noRebase: false,
+  processImport: false,
+  noAdvanced: false,
+  compatibility: false,
+  debug: false,
+};
 
 
 // config
@@ -33,6 +44,7 @@ app.use(logfmt.requestLogger());
 
 // routes
 app.post('/html', shrinkHTML);
+app.post('/css', shrinkCSS);
 
 
 // views
@@ -43,6 +55,18 @@ function shrinkHTML(req, res) {
 
     // Now we'll compress the HTML / CSS / JS and return it!
     res.send(htmlminify(body, htmlminifyOpts));
+  });
+
+}
+
+
+function shrinkCSS(req, res) {
+
+  // Grab the body of the POST request as text.
+  textBody(req, function(err, body) {
+
+    // Now we'll compress the CSS and return it!
+    res.send(new cleanCSS(cssminifyOpts).minify(body));
   });
 
 }
