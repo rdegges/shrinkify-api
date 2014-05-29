@@ -9,7 +9,8 @@
     "express": "~4.3.0",
     "html-minifier": "~0.6.1",
     "logfmt": "~1.1.2",
-    "clean-css": "~2.1.8"
+    "clean-css": "~2.1.8",
+    "uglify-js2": "~2.1.11"
   },
   "devDependencies": {},
   "scripts": {

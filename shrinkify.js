@@ -5,6 +5,7 @@ var htmlminify = require('html-minifier').minify;
 var textBody = require('body');
 var compress = require('compression');
 var cleanCSS = require('clean-css');
+var uglifyjs = require('uglify-js2');
 
 
 // globals
@@ -35,6 +36,10 @@ var cssminifyOpts = {
   compatibility: false,
   debug: false,
 };
+var uglifyOpts = {
+  fromString: true,
+  mangle: true,
+};
 
 
 // config
@@ -45,30 +50,37 @@ app.use(logfmt.requestLogger());
 // routes
 app.post('/html', shrinkHTML);
 app.post('/css', shrinkCSS);
+app.post('/js', shrinkJS);
 
 
 // views
 function shrinkHTML(req, res) {
+   res.contentType('text/html');
 
   // Grab the body of the POST request as text.
   textBody(req, function(err, body) {
-
-    // Now we'll compress the HTML / CSS / JS and return it!
     res.send(htmlminify(body, htmlminifyOpts));
   });
-
 }
 
 
 function shrinkCSS(req, res) {
+   res.contentType('text/css');
 
   // Grab the body of the POST request as text.
   textBody(req, function(err, body) {
-
-    // Now we'll compress the CSS and return it!
     res.send(new cleanCSS(cssminifyOpts).minify(body));
   });
+}
 
+
+function shrinkJS(req, res) {
+   res.contentType('text/javascript');
+
+  // Grab the body of the POST request as text.
+  textBody(req, function(err, body) {
+    res.send(uglifyjs.minify(body, uglifyOpts)['code']);
+  });
 }
 
 
