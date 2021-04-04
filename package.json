@@ -7,7 +7,7 @@
     "body": "~4.4.2",
     "compression": "~1.0.2",
     "express": "~4.3.0",
-    "html-minifier": "~0.6.1",
+    "html-minifier": "~0.8.0",
     "logfmt": "~1.1.2",
     "clean-css": "~2.1.8",
     "uglify-js2": "~2.1.11"
